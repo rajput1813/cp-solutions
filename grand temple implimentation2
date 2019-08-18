@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long log
+template<typename T>
+class graph{
+	map<T,list<T> >adjlist;
+	public:
+		graph(){
+			
+		}
+		void addedge(T u,T v,bool bidir=true){
+			adjlist[u].push_back(v);
+			if(bidir){
+				adjlist[v].push_back(u);
+			}
+		}
+		void printadjlist(){
+			for(auto row:adjlist){
+				t key=row.first;
+				cout<<key<<"->";
+				for(T element:row.second){
+					cout<<element<<" ";
+				}
+				cout<<endl;
+			}
+		}
+};
+int main{
+	graph<string> g;
+	g.addedge("Amritsar","delhi");
+	g.addedge("Amritsar","jaipur");
+	g.addedge("delhi","siachen");
+	g.addedge("delhi","banglore");
+	g.addedge("delhi","agra");
+	g.addedge("Amritsar","siachen");
+	g.printlist();
+	
+	
+}
