@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+bool vis[10000];
+ll parent[10000];
+vector<ll>v[1000];
+ll c=0;
+bool cyclebfs(int src){
+	
+	queue<int>q;
+	q.push(src);
+	vis[src]=true;
+	parent[src]=src;
+	
+	while(!q.empty()){
+		
+		ll p=q.front();
+		q.pop();
+		for(ll i=0;i<v[p].size();i++){
+			
+			if(vis[v[p][i]]==false){
+				
+				q.push(v[p][i]);
+				vis[v[p][i]]=true;
+				parent[v[p][i]]=p;
+			}
+			else if(vis[v[p][i]]==true&&parent[v[p][i]]!=p){
+				
+				c++;
+				return true;
+			}
+		
+		}
+		
+	}
+	 
+	return false;
+	
+}
+int main(){
+	v[1].push_back(0);
+	v[0].push_back(1);
+	v[0].push_back(2);
+	v[2].push_back(0);	
+	v[2].push_back(1);
+	v[1].push_back(2);
+	v[0].push_back(3);
+	v[3].push_back(0);
+	v[3].push_back(4);
+	v[4].push_back(3);
+	if(cyclebfs(0)==true)
+	cout<<"yes"<<endl;
+	else
+	cout<<"no"<<endl;
+	cout<<c<<endl;
+}
