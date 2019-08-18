@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+	using namespace std;
+	#define ll long long
+	ll setcount(ll n){
+		ll count=0;
+		while(n){
+			count+=n&1;
+			n=n>>1;
+		}
+		return count;
+	}
+	int main(){
+		ll q;
+		cin>>q;
+		while(q--){
+			ll a,b,ans=0;
+			cin>>a>>b;
+			for(ll i=a;i<=b;i++){
+				ans+=setcount(i);
+			}
+			cout<<ans<<endl;
+		}
+	}
