@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long 
+int main(){
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n,m,sum=0;
+		vector<ll>v;
+		vector<ll>vb;
+		cin>>n>>m;
+		ll p=n;
+		ll a[m+1];
+		for(ll i=1;i<=m;i++){
+			cin>>a[i];
+			
+		}
+		while(p--){
+			ll x,d,b;
+			cin>>x>>d>>b;
+			if(a[x]!=0){
+				sum+=d;
+				a[x]--;
+				v.push_back(x);
+			}
+			else{
+				vb.push_back(b);
+			}
+			
+			
+		}
+		for(ll i=0;i<vb.size();i++){
+			sum+=vb[i];
+		}
+		for(ll i=1;i<=m;i++){
+			if(a[i]!=0){
+				while(a[i]--)
+				v.push_back(i);
+				if(v.size()==n)
+				    break;
+			}
+		}
+		cout<<sum<<endl;
+		for(ll i=0;i<n;i++){
+			cout<<v[i]<<"  ";
+			
+		}
+		cout<<endl;
+	}
+}
