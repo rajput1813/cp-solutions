@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long 
+int main(){
+	ll q,k;
+	cin>>q>>k;
+	set<ll>s;
+	set <ll> :: iterator it; 
+	while(q--){
+		
+		ll a,x,y;
+		cin>>a;
+		if(a==1){
+			cin>>x>>y;
+			ll p=(x*x)+(y*y);
+			s.insert(p);
+		}
+		else if(a==2){
+			it=s.begin();
+			for(ll i=1;i<k;i++)
+		        	it++;
+			
+			
+			cout<<*it<<endl;
+		}
+	}
+}
