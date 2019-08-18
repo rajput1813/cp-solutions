@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main(){
+	ll i,k,q;
+	priority_queue<int>pq;
+	while(q--)
+	{
+		cin>>t;
+		if(t==1){
+			ll x,y;
+			cin>>x>>y;
+			if(pq.size()<k)
+			pq.push_(x+y);
+			else
+			{
+				if(pq.top()>x+y)
+				{
+					pq.pop();
+					pq.push(x+y);
+				}
+			}
+		}
+		else
+		cout<<pq.top<<"\n";
+	}
+}
