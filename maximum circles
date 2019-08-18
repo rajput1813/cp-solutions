@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class circle{
+  public:	long long int c,r;
+	       
+};
+bool comprater(circle a,circle b){
+	return (a.c+a.r)<(b.c+b.r);
+}
+
+int main(){
+	long long int n,c=1;
+	cin>>n;
+	circle arr[n];
+	for(long long int i=0;i<n;i++){
+		cin>>arr[i].c>>arr[i].r;
+		
+	}
+	long long int p =arr[0].c+arr[0].r;
+	sort(arr,arr+n,comprater);
+	for(int i=1;i<n;i++){
+		long long int  k=arr[i].c-arr[i].r;
+		if(k>=p){
+			c++;
+			p=arr[i].c+arr[i].r;
+		}
+	}
+	cout<<n-c<<endl;
+	
+}
