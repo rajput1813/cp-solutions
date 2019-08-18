@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+bool isvalidating(ll books[],ll n,ll k,ll ans){
+	ll current_page=0;
+	ll student=1;
+	for(ll i=0;i<n;i++){
+		if(current_page+books[i]>ans){
+		current_page=books[i];
+		student++;
+		if(student>k)
+		return false;
+	}
+	else{
+		current_page+=books[i];
+	}
+	}
+	return true;
+	
+}
+ll binarysearch(ll books[],ll n,ll m){
+	ll s=0,e=0,totalpages=0;
+	for(ll i=0;i<n;i++){
+		totalpages+=books[i];
+		s=max(s,books[i]);
+	}
+	e=totalpages;
+//	s=books[n-1];
+	ll fres=0; 
+	while(s<=e){
+		
+	ll mid=(s+e)/2;
+	if(isvalidating( books, n, m, mid)){
+		
+		fres=mid;
+		e=mid-1;
+	}
+	else{
+		s=mid+1;
+	}
+	}
+	return fres;
+}
+
+int main(){
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n,m;
+		cin>>n>>m;
+		ll books[100005];
+		for(ll i=0;i<n;i++){
+			cin>>books[i];
+		}
+		ll ans=binarysearch(books,n,m);
+		cout<<ans<<endl;
+	}
+}
