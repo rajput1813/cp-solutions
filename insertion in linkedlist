@@ -1,0 +1,82 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+class node{
+	public:
+		int data;
+		node*next;
+		node(int d){
+			data=d;
+			next=NULL;
+		}
+};
+void insertathead(node *&head,int data){
+	node*n=new node(data);
+	n->next=head;
+	head=n;
+}
+   void insertattail(node *&head,int data){
+   	if(head==NULL){
+   		head =new node(data);
+   		return;
+	   }
+   	node *temp=head;
+   	while(temp->next!=NULL){
+   		temp=temp->next;
+	   }
+	   temp->next= new node(data);
+	   
+   }
+  int length(node *head){
+  	ll len=1;
+  	while(head->next!=NULL){
+  		head=head->next;
+  		len++;
+	  }
+	  return len;
+  }
+void insertmiddle(node*&head,int data,int pos){
+	if(head==NULL||pos==0){
+		insertathead(head,data);
+	}
+	if(pos>length(head)){
+		insertattail(head, data);
+		
+	}
+	int jump=1;
+	node *temp=head;
+	
+	while(jump<=pos-1){
+		temp=temp->next;
+		jump++;
+	}
+	node *n=new node(data);
+	n->next=temp->next;
+	temp->next=n;
+	
+	
+}
+void print(node *head){
+	while(head!=NULL){
+		cout<<head->data<<"->";
+		head=head->next;
+	}
+}
+int main(){
+	node*head=NULL;
+	int n;
+	cin>>n;
+	for(ll i=0;i<n;i++){
+		ll x;
+		cin>>x;
+		insertathead(head,x);
+		
+	}
+	print(head);
+	
+	cout<<endl;
+	insertmiddle(head,9,3);
+	insertattail(head,12);
+	print(head);
+		
+}
